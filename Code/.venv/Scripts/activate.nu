@@ -32,7 +32,7 @@ export-env {
       }
     }
 
-    let virtual_env = 'C:\Users\theus\Downloads\FPAA\AlgoritmoMaxMinSelect-\.venv'
+    let virtual_env = 'C:\Users\theus\Downloads\FPAA\AlgoritmoMaxMinSelect-\Code\.venv'
     let bin = 'Scripts'
 
     let is_windows = ($nu.os-info.family) == 'windows'

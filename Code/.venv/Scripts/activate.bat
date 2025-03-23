@@ -1,4 +1,4 @@
-@set "VIRTUAL_ENV=C:\Users\theus\Downloads\FPAA\AlgoritmoMaxMinSelect-\.venv"
+@set "VIRTUAL_ENV=C:\Users\theus\Downloads\FPAA\AlgoritmoMaxMinSelect-\Code\.venv"
 
 @set "VIRTUAL_ENV_PROMPT="
 @if NOT DEFINED VIRTUAL_ENV_PROMPT (
