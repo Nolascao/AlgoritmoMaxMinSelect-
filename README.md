@@ -74,9 +74,7 @@ Uma tupla contendo dois valores:
 Nós: 
 1. Início da Função
 2. Verificação do if
-3. Ação dentro do if
 4. Verificação do if
-3. Ação dentro do if
 5. Inicializaçao de mid
 6. Inicialização das variáveis left_min e left_max
 6. Inicialização das variáveis right_min e right_max
@@ -84,33 +82,50 @@ Nós:
 8. Inicialização da variável overral_max
 9. Retorno final
 
------------------------------Falta fazer daqui pra baixo
-
 Arestas: 
-1. Inicio do nó para verificação do if
-2. Verificação do If para ação dentro do if
-3. Verificação do If para retorno final
-4. Ação dentro do if para inicialização de n
-5. Inicialização de n para inicialização de m
-6. Inicialização de m para inicialização das variáveis high_x e low_x
-7. Inicalização das variáveis high_x e low_x para a Inicialização das variáveis high_y e low_y
-8. Inicialização das variáveis high_y e low_y para inicialização da variável z0
-9. Inicialização da variável z0 para inicialização da variável z1
-10. Inicialização da variável z1 para inicialização da variável z2
-11. Inicialização da variável z2 para retorno final
+1. Inicio da função para verificação do if
+2. Verificação do If para retorno final
+3. Verificação do If para Verificação do próximo if
+4. Verificação do If para retorno final
+5. Verificação do If para inicialização de mid
+6. Inicialização de mid para Inicialização das variáveis left_min e left_max
+7. Inicialização das variáveis left_min e left_max para Inicialização das variáveis right_min e right_max
+8. Inicialização das variáveis right_min e right_max para a Inicialização da variável overral_min
+9. Inicialização da variável overral_min para Inicialização da variável overral_max
+10. Inicialização da variável overral_min para retorno final
 
-![image](https://github.com/user-attachments/assets/484c115e-989b-440d-921a-9b230a38165a)
-
-### Complexidade Ciclomática = E - N + 2P = 11 - 10 + 2*1 = 3 
+### Complexidade Ciclomática = E - N + 2P = 10 - 9 + 2*1 = 3 
 
 ### Complexidade Assintótica
 
 **Complexidade temporal:** 
-- Melhor caso: O(1)
-- Caso Médio: O(n^{1.585})
-- Pior caso: O(n^{1.585})
+"Explique detalhadamente o número de comparações realizadas em cada etapa do algoritmo, considerando a divisão do problema em subproblemas e a combinação dos resultados. Calcule o total de comparações realizadas para 𝑛 elementos e mostre como isso resulta em uma complexidade temporal 𝑂(𝑛)" 
 
-**Complexidade Espacial:**
-- Melhor caso: O(1)
-- Caso Médio: (O(\log n)
-- Pior Caso: O(\log n)
+Considerando o pior caso, o algoritmo não entrará nos dois primeiros ifs, já que, a condição deles baseia no vetor possuir 1 ou 2 números somente. 
+Tendo isso em vista, a contagem começa na linha 17: 
+
+mid = len(arr) / 1 Operação 
+left_min, left_max = max_min_select(arr[:mid]) / 2 operações
+right_min, right_max = max_min_select(arr[mid:])  / 2 operações
+overall_min = min(left_min, right_min) 
+overall_max = max(left_max, right_max) / Considerando essa linha e a de cima como um mesmo subproblema, ele fará n operações
+return overall_min, overall_max / 1 Operação 
+
+**O(n + 4) = O(n)** 
+
+**Análise da complexidade assintótica pela aplicação do Teorema Mestre:** 
+
+- Considere a recorrência do MaxMin Select: § 𝑇(𝑛) = 2𝑇 (𝑛 / 2) + 𝑂(1)
+- Perguntas:
+   1. Identifique os valores de 𝑎, 𝑏 e 𝑓(𝑛) na fórmula: 𝑇(𝑛) = 𝑎 ⋅ 𝑇 (𝑛 / 𝑏) + 𝑓(𝑛).
+        a = 2, b = 2, f(n) = O(1)
+   2. Calcule log 𝑏 𝑎 para determinar o valor de 𝑝.
+        Log2 2 = 1, logo p = 1
+   3. Determine em qual dos três casos do Teorema Mestre esta recorrência se enquadra.
+     O Teorema Mestre desta recorrência se enquadra no Caso 1, já que o Custo da recursão domina, neste caso. 
+   4. Encontre a solução assintótica (𝑇(𝑛)) da fórmula
+      Como f(n) = O(1) = O(n⁰)
+      T(n) = θ(n)
+
+
+
